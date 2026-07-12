@@ -136,7 +136,7 @@ function HomePage() {
                 Private AI-assisted couture atelier
               </p>
               <h1 className="dordo-home-hero-headline mt-6 mr-[200px] max-w-[680px] font-['Bacasime_Antique',serif] text-[2.6rem] leading-[1.08] tracking-[-0.045em] text-[#211b16] sm:text-[3.6rem] lg:text-[4.65rem]">
-                Imagine your dress We bring it to life!
+                Imagine Your Dress We Bring it to Life!
               </h1>
               <p className="mt-6 max-w-[610px] text-base leading-8 text-[#51473d] sm:text-lg sm:leading-9">
                 Build a custom gown concept in our AI design studio, then work with the DORDO
@@ -360,42 +360,6 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="border-y border-black/6 bg-[#fffaf4]">
-          <div className="dordo-mobile-section container-atelier grid gap-12 py-18 md:py-24 lg:grid-cols-[0.8fr_1.2fr]">
-            <div>
-              <p className="text-[0.76rem] uppercase tracking-[0.28em] text-primary">
-                Before you begin
-              </p>
-              <h2 className="mt-5 font-serif text-4xl leading-tight tracking-[-0.04em] md:text-5xl">
-                Straight answers for a private custom process.
-              </h2>
-              <GoldDivider className="mt-6" />
-              <p className="mt-6 max-w-md text-base leading-8 text-muted-foreground">
-                The design studio is meant to make the first conversation easier—not to replace the
-                judgment of an experienced atelier.
-              </p>
-              <Button
-                asChild
-                variant="outline"
-                className="mt-8 h-12 rounded-none border-[#a99a87] bg-transparent px-7 text-[0.72rem] uppercase tracking-[0.18em] shadow-none hover:bg-white/70"
-              >
-                <Link to="/faq">Read all questions</Link>
-              </Button>
-            </div>
-
-            <div className="divide-y divide-[#d7cbb9] border-y border-[#d7cbb9]">
-              {faqs.map((item, index) => (
-                <article key={item.q} className="grid gap-4 py-7 sm:grid-cols-[48px_1fr]">
-                  <span className="font-serif text-2xl text-primary">0{index + 1}</span>
-                  <div>
-                    <h3 className="font-serif text-2xl leading-tight text-[#29221c]">{item.q}</h3>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.a}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
 
         <section className="relative overflow-hidden bg-[#e9ded0]">
           <img
