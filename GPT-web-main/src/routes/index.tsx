@@ -135,8 +135,8 @@ function HomePage() {
                 <span className="h-px w-10 bg-[#a87932]" />
                 Private AI-assisted couture atelier
               </p>
-              <h1 className="mt-6 max-w-[680px] font-serif text-[2.6rem] leading-[1.08] tracking-[-0.045em] text-[#211b16] sm:text-[3.6rem] lg:text-[4.65rem]">
-                Imagine your dress. We bring it to life.
+              <h1 className="dordo-home-hero-headline mt-6 mr-[200px] max-w-[680px] font-['Bacasime_Antique',serif] text-[2.6rem] leading-[1.08] tracking-[-0.045em] text-[#211b16] sm:text-[3.6rem] lg:text-[4.65rem]">
+                Imagine your dress We bring it to life!
               </h1>
               <p className="mt-6 max-w-[610px] text-base leading-8 text-[#51473d] sm:text-lg sm:leading-9">
                 Build a custom gown concept in our AI design studio, then work with the DORDO
@@ -183,7 +183,7 @@ function HomePage() {
             <p className="text-[0.68rem] uppercase tracking-[0.23em] text-[#d8ad65]">
               The DORDO method
             </p>
-            <p className="mt-3 font-serif text-2xl leading-tight">
+            <p className="mt-3 mr-5 font-serif text-2xl leading-tight">
               Digital imagination, grounded in real couture construction.
             </p>
             <Link
@@ -212,7 +212,7 @@ function HomePage() {
               </p>
             </div>
 
-            <div className="dordo-mobile-card-rail dordo-compact-rail mt-14 grid gap-px overflow-hidden border border-[#d3c5b2] bg-[#d3c5b2] md:grid-cols-2 xl:grid-cols-4">
+            <div className="dordo-mobile-card-rail dordo-compact-rail mt-[5px] grid gap-px overflow-hidden border border-[#d3c5b2] bg-[#d3c5b2] md:grid-cols-2 xl:grid-cols-4">
               {atelierSteps.map((step) => (
                 <article
                   key={step.title}
@@ -224,7 +224,7 @@ function HomePage() {
                       <step.icon className="h-5 w-5" />
                     </div>
                   </div>
-                  <h3 className="mt-10 font-serif text-2xl leading-tight text-[#28211b]">
+                  <h3 className="mt-0 font-serif text-2xl leading-tight text-[#28211b]">
                     {step.title}
                   </h3>
                   <p className="mt-4 text-sm leading-7 text-muted-foreground">{step.desc}</p>

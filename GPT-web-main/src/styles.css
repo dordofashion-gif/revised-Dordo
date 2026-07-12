@@ -930,3 +930,7 @@ main > section:first-of-type h1 {
   font-style: normal;
   font-weight: 400;
 }
+
+.dordo-home-hero-copy .dordo-home-hero-headline {
+  font-family: "Bacasime Antique", serif;
+}
