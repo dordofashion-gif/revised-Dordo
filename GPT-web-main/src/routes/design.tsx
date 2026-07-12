@@ -459,7 +459,7 @@ function DesignStudio() {
                       <MultiUploadCard
                         id="dress-inspiration"
                         title="Dress inspiration"
-                        helper="Add up to four dresses, sketches, or screenshots. The first image can guide image-to-image generation."
+                        helper="Add dresses, sketches, or screenshots. The image can guide our AI model to generate your desired design."
                         icon={Sparkles}
                         images={inspirationPhotos}
                         max={4}
@@ -489,9 +489,6 @@ function DesignStudio() {
                           </p>
                         </div>
                       </div>
-                      <p className="shrink-0 text-[0.7rem] uppercase tracking-[0.18em] text-primary">
-                        {allReferences.length}/{MAX_REFERENCE_IMAGES} attached
-                      </p>
                     </div>
 
                     <div className="dordo-mobile-step-actions mt-8 flex flex-col justify-end gap-3 sm:flex-row">
@@ -1154,9 +1151,6 @@ function MultiUploadCard({
           <p className="font-serif text-xl text-[#29221c]">{title}</p>
           <p className="mt-2 text-xs leading-6 text-muted-foreground">{helper}</p>
         </div>
-        <span className="shrink-0 text-[0.64rem] uppercase tracking-[0.14em] text-primary">
-          {images.length}/{max}
-        </span>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
