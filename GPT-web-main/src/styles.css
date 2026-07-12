@@ -1,0 +1,932 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+
+@source "../src";
+
+@font-face {
+  font-family: "Stellar";
+  src:
+    local("Stellar"),
+    url("/fonts/stellar.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Cormorant Garamond", "Cormorant Garamond Fallback", Georgia, serif;
+  --font-serif: "Playfair Display", "Playfair Display Fallback", ui-serif, Georgia, serif;
+
+  /* Cormorant Garamond has a refined, compact x-height. This moderately larger
+     scale keeps body copy clearly visible while preserving an elegant luxury feel. */
+  --text-xs: 0.875rem;
+  --text-sm: 1.05rem;
+  --text-base: 1.2rem;
+  --text-lg: 1.4rem;
+  --text-xl: 1.55rem;
+  --text-2xl: 1.85rem;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.35rem;
+  --background: oklch(0.972 0.014 84);
+  --foreground: oklch(0.18 0.014 70);
+  --card: oklch(0.993 0.006 84);
+  --card-foreground: oklch(0.18 0.014 70);
+  --popover: oklch(0.993 0.006 84);
+  --popover-foreground: oklch(0.18 0.014 70);
+  --primary: oklch(0.56 0.078 78);
+  --primary-foreground: oklch(0.98 0.008 84);
+  --secondary: oklch(0.928 0.027 82);
+  --secondary-foreground: oklch(0.18 0.014 70);
+  --muted: oklch(0.915 0.016 82);
+  --muted-foreground: oklch(0.46 0.018 70);
+  --accent: oklch(0.935 0.026 82);
+  --accent-foreground: oklch(0.18 0.014 70);
+  --destructive: oklch(0.52 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 84);
+  --border: oklch(0.835 0.018 82);
+  --input: oklch(0.835 0.018 82);
+  --ring: oklch(0.56 0.078 78);
+  --chart-1: oklch(0.56 0.078 78);
+  --chart-2: oklch(0.55 0.08 160);
+  --chart-3: oklch(0.42 0.08 240);
+  --chart-4: oklch(0.75 0.15 60);
+  --chart-5: oklch(0.55 0.12 30);
+  --sidebar: oklch(0.96 0.01 84);
+  --sidebar-foreground: oklch(0.22 0.02 285);
+  --sidebar-primary: oklch(0.22 0.02 285);
+  --sidebar-primary-foreground: oklch(0.97 0.01 84);
+  --sidebar-accent: oklch(0.94 0.02 84);
+  --sidebar-accent-foreground: oklch(0.22 0.02 285);
+  --sidebar-border: oklch(0.88 0.01 84);
+  --sidebar-ring: oklch(0.56 0.078 78);
+}
+
+.dark {
+  --background: oklch(0.18 0.02 285);
+  --foreground: oklch(0.97 0.01 84);
+  --card: oklch(0.24 0.03 285);
+  --card-foreground: oklch(0.97 0.01 84);
+  --popover: oklch(0.24 0.03 285);
+  --popover-foreground: oklch(0.97 0.01 84);
+  --primary: oklch(0.68 0.09 78);
+  --primary-foreground: oklch(0.18 0.02 285);
+  --secondary: oklch(0.28 0.03 285);
+  --secondary-foreground: oklch(0.97 0.01 84);
+  --muted: oklch(0.28 0.03 285);
+  --muted-foreground: oklch(0.7 0.05 84);
+  --accent: oklch(0.32 0.04 285);
+  --accent-foreground: oklch(0.97 0.01 84);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0.01 84);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.68 0.09 78);
+  --chart-1: oklch(0.68 0.09 78);
+  --chart-2: oklch(0.55 0.1 160);
+  --chart-3: oklch(0.4 0.08 240);
+  --chart-4: oklch(0.75 0.15 60);
+  --chart-5: oklch(0.55 0.12 30);
+  --sidebar: oklch(0.24 0.03 285);
+  --sidebar-foreground: oklch(0.97 0.01 84);
+  --sidebar-primary: oklch(0.68 0.09 78);
+  --sidebar-primary-foreground: oklch(0.18 0.02 285);
+  --sidebar-accent: oklch(0.28 0.03 285);
+  --sidebar-accent-foreground: oklch(0.97 0.01 84);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.68 0.09 78);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1;
+    background-image:
+      radial-gradient(circle at 10% 0%, rgba(146, 105, 44, 0.11), transparent 28%),
+      radial-gradient(circle at 95% 20%, rgba(226, 205, 169, 0.25), transparent 22%),
+      linear-gradient(180deg, #fbf6ee 0%, #f7f0e7 48%, #fbf6ef 100%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid rgba(154, 104, 33, 0.55);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: rgba(146, 105, 44, 0.25);
+  }
+}
+
+@utility container-atelier {
+  width: 100%;
+  max-width: 1540px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@layer components {
+  .dordo-wordmark-wrap {
+    display: block;
+    line-height: 0;
+  }
+
+  .dordo-wordmark-image {
+    display: block;
+    width: min(5.05em, 100%);
+    height: auto;
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.38))
+      drop-shadow(0 10px 30px rgba(113, 73, 24, 0.12));
+  }
+
+  .dordo-gold-text {
+    color: #a77826;
+    background: linear-gradient(
+      112deg,
+      #8a5b18 0%,
+      #d7ad55 23%,
+      #fff0a6 41%,
+      #b98221 62%,
+      #6f4715 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.35),
+      0 10px 32px rgba(113, 73, 24, 0.12);
+  }
+
+  .dordo-btn-dark {
+    border-color: #151515;
+    background: #151515;
+    color: #f8f1e8;
+  }
+  .dordo-btn-dark:hover {
+    background: #050505;
+  }
+
+  .dordo-btn-gold {
+    border-color: #c99b50;
+    background: #c39a58;
+    color: #171411;
+  }
+  .dordo-btn-gold:hover {
+    background: #b48940;
+  }
+
+  .dordo-card {
+    border: 1px solid rgba(89, 67, 42, 0.15);
+    background: rgba(255, 252, 247, 0.88);
+    box-shadow: 0 24px 70px rgba(40, 31, 21, 0.09);
+    backdrop-filter: blur(8px);
+  }
+
+  .dordo-select {
+    appearance: none;
+    border: 1px solid var(--color-input);
+    color: var(--color-foreground);
+    background-image:
+      linear-gradient(45deg, transparent 50%, #796a59 50%),
+      linear-gradient(135deg, #796a59 50%, transparent 50%);
+    background-position:
+      calc(100% - 17px) calc(50% - 2px),
+      calc(100% - 12px) calc(50% - 2px);
+    background-size:
+      5px 5px,
+      5px 5px;
+    background-repeat: no-repeat;
+  }
+
+  .dordo-select:focus {
+    border-color: #9a6821;
+  }
+
+  .dordo-page-frame {
+    border: 1px solid rgba(74, 56, 34, 0.12);
+    background: rgba(252, 247, 239, 0.82);
+    box-shadow: 0 28px 90px rgba(40, 31, 21, 0.1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile luxury system
+   -------------------------------------------------------------------------- */
+
+.dordo-feature-number {
+  display: none;
+}
+
+.dordo-mobile-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dordo-mobile-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --mobile-page-gutter: 1.125rem;
+    --mobile-section-space: 4rem;
+  }
+
+  html {
+    scroll-padding-top: 76px;
+  }
+
+  body {
+    background-image: linear-gradient(180deg, #fbf6ee 0%, #f7efe5 58%, #fbf6ee 100%);
+  }
+
+  .container-atelier {
+    padding-left: var(--mobile-page-gutter);
+    padding-right: var(--mobile-page-gutter);
+  }
+
+  .dordo-site-header {
+    box-shadow: 0 12px 36px rgba(39, 29, 18, 0.08);
+  }
+
+  .dordo-header-inner {
+    position: relative;
+  }
+
+  .dordo-header-inner::after {
+    position: absolute;
+    right: var(--mobile-page-gutter);
+    bottom: -1px;
+    left: var(--mobile-page-gutter);
+    height: 1px;
+    content: "";
+    background: linear-gradient(90deg, transparent, rgba(168, 121, 50, 0.42), transparent);
+  }
+
+  .dordo-menu-trigger {
+    border-color: rgba(139, 111, 75, 0.48);
+    box-shadow: 0 8px 24px rgba(62, 45, 25, 0.08);
+  }
+
+  .dordo-mobile-menu {
+    background-image:
+      radial-gradient(circle at 92% 8%, rgba(194, 151, 81, 0.2), transparent 29%),
+      linear-gradient(180deg, #fbf6ee 0%, #f6ede1 100%);
+  }
+
+  .dordo-mobile-nav-link {
+    transition:
+      color 180ms ease,
+      padding 180ms ease,
+      background 180ms ease;
+  }
+
+  .dordo-mobile-nav-link:active {
+    padding-left: 0.55rem;
+    background: rgba(189, 146, 78, 0.08);
+  }
+
+  .dordo-mobile-menu-actions a,
+  .dordo-mobile-menu-actions button {
+    min-height: 52px;
+  }
+
+  /* Split editorial heroes used by inner pages. */
+  .dordo-split-hero {
+    display: block;
+    min-height: 0 !important;
+    overflow: hidden;
+    background: #f5ecdf;
+  }
+
+  .dordo-split-hero-image {
+    position: relative !important;
+    inset: auto !important;
+    display: block;
+    width: 100% !important;
+    height: clamp(330px, 92vw, 445px) !important;
+    opacity: 1 !important;
+    object-position: center 24%;
+  }
+
+  .dordo-split-hero-overlay {
+    z-index: 1;
+    height: clamp(330px, 92vw, 445px);
+    background: linear-gradient(
+      180deg,
+      rgba(17, 18, 17, 0.02) 42%,
+      rgba(17, 18, 17, 0.16) 72%,
+      rgba(245, 236, 223, 0.96) 100%
+    ) !important;
+  }
+
+  .dordo-split-hero-layout {
+    display: block !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 3.75rem !important;
+  }
+
+  .dordo-split-hero-copy {
+    position: relative;
+    z-index: 3;
+    margin-top: -2.75rem;
+    padding: 1.65rem 1.25rem 0;
+    border-top: 1px solid rgba(169, 130, 73, 0.38);
+    background: linear-gradient(180deg, rgba(251, 246, 238, 0.98), #f5ecdf 68%);
+    box-shadow: 0 -18px 52px rgba(35, 26, 17, 0.1);
+  }
+
+  .dordo-split-hero-copy .dordo-wordmark-wrap {
+    font-size: 3.25rem !important;
+  }
+
+  .dordo-split-hero-copy h1 {
+    margin-top: 0.85rem !important;
+    font-size: clamp(2rem, 9vw, 2.65rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.035em !important;
+  }
+
+  .dordo-split-hero-copy > p:not(:first-of-type),
+  .dordo-split-hero-copy h1 + div + p {
+    line-height: 1.65 !important;
+  }
+
+  .dordo-split-hero-copy .mobile-primary-actions,
+  .mobile-primary-actions {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 0.7rem !important;
+  }
+
+  .mobile-primary-actions > * {
+    width: 100%;
+    min-height: 52px;
+  }
+
+  /* Home hero: image first, editorial content card second. */
+  .dordo-home-hero {
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: #f6eee3;
+  }
+
+  .dordo-home-hero-media {
+    position: relative;
+    display: block;
+    height: clamp(390px, 108vw, 515px);
+    overflow: hidden;
+  }
+
+  .dordo-home-hero-image {
+    position: relative !important;
+    inset: auto !important;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-position: 62% center !important;
+  }
+
+  .dordo-home-hero-overlay {
+    height: clamp(390px, 108vw, 515px);
+    background: linear-gradient(
+      180deg,
+      rgba(17, 18, 17, 0.02) 34%,
+      rgba(17, 18, 17, 0.2) 70%,
+      rgba(246, 238, 227, 0.98) 100%
+    ) !important;
+  }
+
+  .dordo-home-hero-layout {
+    display: block !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .dordo-home-hero-copy {
+    position: relative;
+    z-index: 5;
+    margin-top: -3.7rem;
+    padding: 1.65rem 1.2rem 1.5rem;
+    border: 1px solid rgba(172, 137, 84, 0.32);
+    background: rgba(251, 246, 238, 0.97);
+    box-shadow: 0 26px 70px rgba(47, 35, 22, 0.14);
+    backdrop-filter: blur(12px);
+  }
+
+  .dordo-home-hero-copy .dordo-wordmark-wrap {
+    font-size: 3.35rem !important;
+  }
+
+  .dordo-home-hero-copy h1 {
+    margin-top: 1.15rem !important;
+    font-size: clamp(2.35rem, 10.8vw, 3.05rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  .dordo-home-hero-copy > p {
+    line-height: 1.65;
+  }
+
+  .dordo-home-trust {
+    display: flex !important;
+    max-width: none !important;
+    margin-right: -1.2rem;
+    padding-right: 1.2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .dordo-home-trust::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dordo-home-trust p {
+    flex: 0 0 78%;
+    min-height: 54px;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid rgba(172, 137, 84, 0.24);
+    background: rgba(255, 252, 247, 0.72);
+    scroll-snap-align: start;
+  }
+
+  /* Horizontal editorial rails keep long mobile pages elegant and usable. */
+  .dordo-mobile-card-rail {
+    display: flex !important;
+    gap: 1rem !important;
+    margin-right: calc(var(--mobile-page-gutter) * -1);
+    padding-right: var(--mobile-page-gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .dordo-mobile-card-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dordo-mobile-card-rail > * {
+    flex: 0 0 min(84vw, 340px);
+    scroll-snap-align: start;
+  }
+
+  .dordo-mobile-card-rail.dordo-compact-rail > * {
+    flex-basis: min(78vw, 315px);
+  }
+
+  .dordo-mobile-swipe-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    margin-top: 1rem;
+    color: #8b652e;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* Shared mobile spacing and typography. */
+  .dordo-mobile-section {
+    padding-top: var(--mobile-section-space) !important;
+    padding-bottom: var(--mobile-section-space) !important;
+  }
+
+  .dordo-mobile-section-tight {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .dordo-mobile-heading {
+    font-size: clamp(2.25rem, 10vw, 3rem) !important;
+    line-height: 1.08 !important;
+  }
+
+  .dordo-card {
+    box-shadow: 0 18px 48px rgba(40, 31, 21, 0.08);
+    backdrop-filter: none;
+  }
+
+  /* Design studio mobile experience. */
+  .dordo-design-intro {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.25rem !important;
+  }
+
+  .dordo-design-intro .dordo-wordmark-wrap {
+    max-width: 280px !important;
+    font-size: 3.2rem !important;
+  }
+
+  .dordo-design-intro h1 {
+    font-size: 2.25rem !important;
+    line-height: 1.08 !important;
+  }
+
+  .dordo-design-shell {
+    padding-top: 1.25rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .dordo-design-form-card,
+  .dordo-quote-form-card {
+    padding: 1.15rem !important;
+    border-color: rgba(166, 128, 72, 0.28);
+    box-shadow: 0 18px 55px rgba(39, 29, 18, 0.09);
+  }
+
+  .dordo-mobile-preview-card {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 0.9rem;
+    align-items: center;
+    padding: 0.75rem;
+    border: 1px solid rgba(171, 135, 80, 0.34);
+    background: linear-gradient(135deg, #151717 0%, #25332f 100%);
+    color: white;
+    box-shadow: 0 18px 45px rgba(24, 24, 23, 0.15);
+  }
+
+  .dordo-mobile-preview-card img {
+    width: 78px;
+    height: 98px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .dordo-mobile-step-actions {
+    position: sticky;
+    z-index: 30;
+    bottom: 0;
+    margin-right: -1.15rem !important;
+    margin-left: -1.15rem !important;
+    padding: 0.85rem 1.15rem calc(0.85rem + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(164, 126, 70, 0.28);
+    background: rgba(251, 246, 238, 0.96);
+    box-shadow: 0 -14px 36px rgba(41, 31, 20, 0.11);
+    backdrop-filter: blur(14px);
+  }
+
+  .dordo-mobile-step-actions > * {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .dordo-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .dordo-choice-grid button {
+    min-height: 118px;
+    padding: 0.9rem;
+  }
+
+  .dordo-choice-grid button p:first-child {
+    font-size: 1.2rem;
+  }
+
+  /* Quote and consultation forms. */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  .dordo-quote-reassurance {
+    display: flex !important;
+    gap: 0.9rem !important;
+    margin-right: calc(var(--mobile-page-gutter) * -1);
+    padding: 1rem var(--mobile-page-gutter) 1rem 0;
+    border: 0 !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    background: transparent !important;
+    scrollbar-width: none;
+  }
+
+  .dordo-quote-reassurance::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dordo-quote-reassurance > * {
+    flex: 0 0 min(78vw, 300px);
+    border: 1px solid #d7cbb9;
+    scroll-snap-align: start;
+  }
+
+  .dordo-mobile-submit-actions {
+    position: sticky;
+    z-index: 30;
+    bottom: 0;
+    margin-right: -1.15rem !important;
+    margin-left: -1.15rem !important;
+    padding: 0.85rem 1.15rem calc(0.85rem + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(164, 126, 70, 0.28);
+    background: rgba(247, 240, 231, 0.97);
+    box-shadow: 0 -14px 36px rgba(41, 31, 20, 0.11);
+    backdrop-filter: blur(14px);
+  }
+
+  .dordo-mobile-submit-actions > * {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  /* Atelier mobile polish. */
+  .dordo-atelier-hero-grid {
+    min-height: 0 !important;
+    gap: 2.25rem !important;
+    padding-top: 2.75rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  .dordo-atelier-copy .dordo-wordmark-wrap {
+    font-size: 3.25rem !important;
+  }
+
+  .dordo-atelier-copy h1 {
+    font-size: 2.7rem !important;
+  }
+
+  .dordo-atelier-copy > p {
+    line-height: 1.65 !important;
+  }
+
+  .dordo-atelier-portrait {
+    max-width: 355px !important;
+  }
+
+  .dordo-atelier-portrait > div:first-child,
+  .dordo-atelier-portrait > div:nth-child(2) {
+    transform: scale(0.72);
+  }
+
+  .dordo-atelier-secondary-image {
+    height: 430px !important;
+  }
+
+  /* Footer: clearer hierarchy and less visual density. */
+  footer .container-atelier {
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+  }
+
+  footer .grid.gap-8.text-sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1rem;
+  }
+
+  footer .grid.gap-8.text-sm > div:last-child {
+    grid-column: 1 / -1;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 389px) {
+  :root {
+    --mobile-page-gutter: 0.95rem;
+  }
+
+  .dordo-home-hero-copy,
+  .dordo-split-hero-copy {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .dordo-choice-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  footer .grid.gap-8.text-sm {
+    grid-template-columns: 1fr;
+  }
+
+  footer .grid.gap-8.text-sm > div:last-child {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .dordo-feature-strip {
+    display: flex !important;
+    gap: 0.9rem !important;
+    margin-right: calc(var(--mobile-page-gutter) * -1);
+    padding: 0 1.125rem 0 0 !important;
+    overflow-x: auto;
+    border: 0 !important;
+    background: transparent !important;
+    text-align: left !important;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .dordo-feature-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dordo-feature-item {
+    position: relative;
+    flex: 0 0 min(82vw, 320px);
+    min-height: 168px;
+    padding: 1.2rem 1.15rem 1.1rem;
+    overflow: hidden;
+    border: 1px solid rgba(172, 137, 84, 0.36);
+    background: linear-gradient(145deg, rgba(255, 252, 247, 0.96), rgba(244, 234, 221, 0.98));
+    box-shadow: 0 16px 42px rgba(43, 32, 21, 0.08);
+    scroll-snap-align: start;
+  }
+
+  .dordo-feature-number {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.95rem;
+    display: block;
+    color: rgba(142, 102, 43, 0.2);
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+
+  .dordo-feature-item > p:first-of-type {
+    max-width: 78%;
+    font-size: 0.86rem !important;
+    line-height: 1.35;
+  }
+
+  .dordo-feature-item > p:last-of-type {
+    max-width: 95%;
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .dordo-mobile-card-rail {
+    padding-bottom: 0.5rem;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .dordo-mobile-card-rail > * {
+    border-color: rgba(174, 139, 86, 0.34) !important;
+    box-shadow: 0 18px 48px rgba(43, 32, 21, 0.09);
+  }
+
+  .dordo-step-progress {
+    margin-top: 1.75rem !important;
+    padding: 0 0.1rem;
+  }
+
+  .dordo-step-progress .relative.grid {
+    gap: 0.2rem;
+  }
+
+  .dordo-step-progress button {
+    min-height: 66px;
+    padding: 0.15rem;
+  }
+
+  .dordo-step-progress button > span:first-child {
+    width: 2.35rem;
+    height: 2.35rem;
+    box-shadow: 0 6px 16px rgba(48, 35, 20, 0.08);
+  }
+
+  .dordo-step-progress button > span:last-child {
+    margin-top: 0.55rem !important;
+    font-size: 0.62rem !important;
+    font-weight: 600;
+    letter-spacing: 0.1em !important;
+  }
+
+  .dordo-design-form-card [class*="min-h-[112px]"] {
+    border-radius: 0;
+  }
+
+  .dordo-design-form-card label,
+  .dordo-quote-form-card label {
+    line-height: 1.35;
+  }
+
+  .dordo-design-form-card textarea,
+  .dordo-quote-form-card textarea {
+    line-height: 1.55;
+  }
+
+  .dordo-mobile-section > .text-center h2,
+  .dordo-mobile-section .mx-auto.text-center h2 {
+    font-size: clamp(2.25rem, 9.5vw, 3rem) !important;
+    line-height: 1.08 !important;
+  }
+
+  .dordo-mobile-section > .text-center p,
+  .dordo-mobile-section .mx-auto.text-center p {
+    line-height: 1.6;
+  }
+
+  .dordo-mobile-card-rail article,
+  .dordo-mobile-card-rail > div {
+    min-width: 0;
+  }
+
+  .dordo-mobile-card-rail img {
+    image-rendering: auto;
+  }
+}
+
+/* Licensed Stellar display face: reserved for the primary hero headline on each page. */
+.dordo-home-hero-copy h1,
+.dordo-split-hero-copy h1,
+main > section:first-of-type h1 {
+  font-family: "Stellar", "Playfair Display", "Playfair Display Fallback", ui-serif, Georgia, serif;
+  font-style: normal;
+  font-weight: 400;
+}
