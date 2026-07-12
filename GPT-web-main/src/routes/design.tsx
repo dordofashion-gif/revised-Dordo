@@ -20,7 +20,6 @@ import {
   RefreshCw,
   ShieldCheck,
   Sparkles,
-  SwatchBook,
   Upload,
   UserRound,
   WandSparkles,
@@ -171,9 +170,7 @@ function DesignStudio() {
 
   const [facePhoto, setFacePhoto] = useState<UploadedImage | null>(null);
   const [frontBodyPhoto, setFrontBodyPhoto] = useState<UploadedImage | null>(null);
-  const [sideBodyPhoto, setSideBodyPhoto] = useState<UploadedImage | null>(null);
   const [inspirationPhotos, setInspirationPhotos] = useState<UploadedImage[]>([]);
-  const [fabricPhotos, setFabricPhotos] = useState<UploadedImage[]>([]);
 
   const [variations, setVariations] = useState<string[]>([]);
   const [selectedDesign, setSelectedDesign] = useState("");
@@ -183,11 +180,9 @@ function DesignStudio() {
     () => [
       ...(facePhoto ? [facePhoto] : []),
       ...(frontBodyPhoto ? [frontBodyPhoto] : []),
-      ...(sideBodyPhoto ? [sideBodyPhoto] : []),
       ...inspirationPhotos,
-      ...fabricPhotos,
     ],
-    [facePhoto, frontBodyPhoto, sideBodyPhoto, inspirationPhotos, fabricPhotos],
+    [facePhoto, frontBodyPhoto, inspirationPhotos],
   );
 
   const buildPrompt = () => {
@@ -308,7 +303,7 @@ function DesignStudio() {
 
     try {
       const body: Record<string, string> = { prompt: finalPrompt };
-      const currentModelReference = inspirationPhotos[0]?.data || fabricPhotos[0]?.data;
+      const currentModelReference = inspirationPhotos[0]?.data;
       if (currentModelReference) body.image = currentModelReference;
 
       const res = await fetch("/api/generate", {
@@ -431,7 +426,7 @@ function DesignStudio() {
                     <StepHeading
                       number="1"
                       eyebrow="Your private references"
-                      title="Show us what words cannot."
+                      title="Show us what words cannot"
                       text="References are optional, but they help communicate personal style, proportion, fabric, and the look you want. Images are prepared for private atelier review."
                     />
 
@@ -458,17 +453,6 @@ function DesignStudio() {
                         }
                         onRemove={() => setFrontBodyPhoto(null)}
                       />
-                      <SingleUploadCard
-                        id="side-body-photo"
-                        title="Side body reference"
-                        helper="Optional side view for proportion."
-                        icon={Camera}
-                        image={sideBodyPhoto}
-                        onChange={(event) =>
-                          handleSingleUpload(event, "Side body reference", setSideBodyPhoto)
-                        }
-                        onRemove={() => setSideBodyPhoto(null)}
-                      />
                     </div>
 
                     <div className="mt-5 grid gap-5 lg:grid-cols-2">
@@ -492,24 +476,6 @@ function DesignStudio() {
                           removeMultiImage(id, inspirationPhotos, setInspirationPhotos)
                         }
                       />
-                      <MultiUploadCard
-                        id="fabric-inspiration"
-                        title="Fabric & texture"
-                        helper="Add up to three fabric, lace, beading, embroidery, or color references."
-                        icon={SwatchBook}
-                        images={fabricPhotos}
-                        max={3}
-                        onChange={(event) =>
-                          handleMultipleUpload(
-                            event,
-                            "Fabric reference",
-                            fabricPhotos,
-                            setFabricPhotos,
-                            3,
-                          )
-                        }
-                        onRemove={(id) => removeMultiImage(id, fabricPhotos, setFabricPhotos)}
-                      />
                     </div>
 
                     <div className="mt-6 flex flex-col gap-4 border border-[#d7cbb9] bg-[#f8f1e8] p-5 sm:flex-row sm:items-center sm:justify-between">
@@ -518,8 +484,8 @@ function DesignStudio() {
                         <div>
                           <p className="text-sm font-medium text-[#2a231d]">Private by design</p>
                           <p className="mt-1 text-xs leading-6 text-muted-foreground">
-                            Your personal references are not shown publicly. Only dress or fabric
-                            inspiration is sent to the current AI model.
+                            Your personal references are not shown publicly. Only dress inspiration
+                            is sent to the current AI model.
                           </p>
                         </div>
                       </div>
@@ -789,8 +755,8 @@ function DesignStudio() {
                           Reference use
                         </p>
                         <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                          {inspirationPhotos[0] || fabricPhotos[0]
-                            ? "The first dress or fabric reference will guide this image generation."
+                          {inspirationPhotos[0]
+                            ? "The first dress reference will guide this image generation."
                             : "This generation will use your written design brief only."}
                         </p>
                         <p className="mt-3 text-xs leading-6 text-muted-foreground">
